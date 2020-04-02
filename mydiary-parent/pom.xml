@@ -9,6 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>mydiary-parent</name>
 	<url>http://maven.apache.org</url>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -17,49 +18,37 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 	<modules>
 		<module>mydiary-uwp</module>
 		<module>mydiary-uwp-webapp</module>
 	</modules>
+
 	<properties>
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<pmd-config-url>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\pmd.xml</pmd-config-url>
 	</properties>
+
 	<reporting>
 		<plugins>
 			<plugin>
+				<!-- Maven Project Info Reports plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.9</version>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.13.0</version>
+			</plugin>
 		</plugins>
 	</reporting>
-	<!--<reporting> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-		<artifactId>maven-checkstyle-plugin</artifactId> <version>2.17</version> 
-		<configuration> <configLocation>checkstyle.xml</configLocation> </configuration> 
-		</plugin> </plugins> </reporting> -->
+
 	<build>
 		<plugins>
-			<!-- Part of Maven - specified version explicitly for compatibility with 
-				the maven-project-info-reports-plugin 3.0.0 -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.7.1</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
+				<!-- Maven Compiler plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
@@ -71,6 +60,48 @@
 				</configuration>
 			</plugin>
 
+			<!-- Maven Site plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+			<plugin>
+				<!-- Maven checkstyle plugin -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+				 <targetJdk>1.8</targetJdk>
+					<failOnViolation>true</failOnViolation>
+					<printFailingErrors>true</printFailingErrors>
+					<rulesets>
+						<ruleset>${pmd-config-url}</ruleset>
+					</rulesets>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+							<goal>pmd</goal>
+							<goal>cpd</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
 </project>

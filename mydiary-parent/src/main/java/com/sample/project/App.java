@@ -6,8 +6,20 @@ package com.sample.project;
  */
 public class App 
 {
+	private String name = "";
+	
+	public void doSomething() {
+        int i = 5; // Unused
+    }
+	
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	SimpleDateFormat sdf = null;
+    	try {
+    	    sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	} catch (Throwable th) {  //Should not catch throwable
+    	    th.printStackTrace();
+    	}
+    	
     }
 }
