@@ -25,52 +25,79 @@
 	</modules>
 
 	<properties>
+		<maven.project.info.reports.version>2.9</maven.project.info.reports.version>
+		<maven.pmd.version>3.13.0</maven.pmd.version>
+		<maven.compiler.version>3.8.0</maven.compiler.version>
+		<maven.site.version>3.7.1</maven.site.version>
+		<maven.checkstyle.version>2.17</maven.checkstyle.version>
+		<maven.pmd.version>3.11.0</maven.pmd.version>
+		<java.jdk.version>1.8</java.jdk.version>
+		<java.jdk.location>C:\Program Files (x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
-		<pmd-config-url>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\pmd.xml</pmd-config-url>
+		<pmd.config.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\pmd-rules.xml</pmd.config.location>
 	</properties>
 
 	<reporting>
 		<plugins>
+			<!-- ===================================================================== -->
+			<!-- Maven Project Info Reports plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
-				<!-- Maven Project Info Reports plugin -->
+
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.9</version>
+				<version>${maven.project.info.reports.version}</version>
 			</plugin>
+			<!-- ===================================================================== -->
+			<!-- Maven PMD plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>${maven.pmd.version}</version>
+				<configuration>
+					<targetJdk>${java.jdk.version}</targetJdk>
+					<failOnViolation>true</failOnViolation>
+					<printFailingErrors>true</printFailingErrors>
+					<rulesets>
+						<ruleset>pmd-rules.xml</ruleset>
+					</rulesets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</reporting>
 
 	<build>
 		<plugins>
+			<!-- ===================================================================== -->
+			<!-- Maven Compile plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
-				<!-- Maven Compiler plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>${maven.compiler.version}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.jdk.version}</source>
+					<target>${java.jdk.version}</target>
 					<fork>true</fork>
-					<executable>C:\Program Files (x86)\Java\jdk1.8.0_241\bin\javac.exe</executable>
+					<executable>${java.jdk.location}</executable>
 				</configuration>
 			</plugin>
-
+			<!-- ===================================================================== -->
 			<!-- Maven Site plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.7.1</version>
+				<version>${maven.site.version}</version>
 			</plugin>
+			<!-- ===================================================================== -->
+			<!-- Maven checkstyle plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
-				<!-- Maven checkstyle plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
+				<version>${maven.checkstyle.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -79,24 +106,27 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- ===================================================================== -->
+			<!-- Maven PMD plugin -->
+			<!-- ===================================================================== -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>${maven.pmd.version}</version>
 				<configuration>
-				 <targetJdk>1.8</targetJdk>
+					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
 					<printFailingErrors>true</printFailingErrors>
 					<rulesets>
-						<ruleset>${pmd-config-url}</ruleset>
+						<ruleset>${pmd.config.location}</ruleset>
 					</rulesets>
 				</configuration>
 				<executions>
 					<execution>
+						<phase>validate</phase>
 						<goals>
 							<goal>check</goal>
-							<goal>pmd</goal>
-							<goal>cpd</goal>
+							<goal>cpd-check</goal>
 						</goals>
 					</execution>
 				</executions>

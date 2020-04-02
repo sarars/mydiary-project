@@ -1,10 +1,10 @@
 package com.sample.project;
 
 /**
- * Hello world!
+ * MainApplication
  *
  */
-public class App 
+public class MainApplication 
 {
 	private String name = "";
 	
@@ -12,7 +12,7 @@ public class App
         int i = 5; // Unused
     }
 	
-    public static void main( String[] args )
+    public static void main( final String[] args )
     {
     	SimpleDateFormat sdf = null;
     	try {
