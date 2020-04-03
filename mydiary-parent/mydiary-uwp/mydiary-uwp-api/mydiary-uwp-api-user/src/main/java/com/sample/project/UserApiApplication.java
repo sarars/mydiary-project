@@ -10,7 +10,7 @@ public final class UserApiApplication
 		super();
 	}
 
-	public static void main( final String[] args )
+	public static void main( final String... args )
     {
 		// UserApiApplication
     }

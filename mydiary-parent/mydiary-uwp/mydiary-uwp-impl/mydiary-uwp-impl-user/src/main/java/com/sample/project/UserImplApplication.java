@@ -10,7 +10,7 @@ public final class UserImplApplication
 		super();
 	}
 
-	public static void main( final String[] args )
+	public static void main( final String... args )
     {
         // UserImplApplication
     }

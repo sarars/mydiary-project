@@ -31,10 +31,15 @@
 		<maven.site.version>3.7.1</maven.site.version>
 		<maven.checkstyle.version>2.17</maven.checkstyle.version>
 		<maven.pmd.version>3.11.0</maven.pmd.version>
+		<pmd.core.version>6.11.0</pmd.core.version>
+		<pmd.java.version>6.15.0</pmd.java.version>
+		<pmd.javascript.version>6.6.0</pmd.javascript.version>
+		<pmd.jsp.version>6.4.0</pmd.jsp.version>
 		<java.jdk.version>1.8</java.jdk.version>
 		<java.jdk.location>C:\Program Files (x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<pmd.config.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\pmd-rules.xml</pmd.config.location>
+		<bestpractices.ruleset.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\bestpractices.xml</bestpractices.ruleset.location>
 	</properties>
 
 	<reporting>
@@ -59,9 +64,10 @@
 					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
 					<printFailingErrors>true</printFailingErrors>
-					<rulesets>
-						<ruleset>pmd-rules.xml</ruleset>
-					</rulesets>
+					<!-- <rulesets>
+						<ruleset>${pmd.config.location}</ruleset>
+						<ruleset>${bestpractices.ruleset.location}</ruleset>
+					</rulesets> -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -113,12 +119,35 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven.pmd.version}</version>
+				 <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-core</artifactId>
+                            <version>${pmd.core.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>${pmd.java.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-javascript</artifactId>
+                            <version>${pmd.javascript.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-jsp</artifactId>
+                            <version>${pmd.jsp.version}</version>
+                        </dependency>
+                    </dependencies>
 				<configuration>
 					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
 					<printFailingErrors>true</printFailingErrors>
 					<rulesets>
 						<ruleset>${pmd.config.location}</ruleset>
+						<ruleset>${bestpractices.ruleset.location}</ruleset>
 					</rulesets>
 				</configuration>
 				<executions>
@@ -126,7 +155,6 @@
 						<phase>validate</phase>
 						<goals>
 							<goal>check</goal>
-							<goal>cpd-check</goal>
 						</goals>
 					</execution>
 				</executions>
