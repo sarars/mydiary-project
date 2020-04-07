@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sample.project</groupId>
 	<artifactId>mydiary-parent</artifactId>
@@ -22,7 +20,8 @@
 	<modules>
 		<module>mydiary-uwp</module>
 		<module>mydiary-uwp-webapp</module>
-	</modules>
+	  <module>mydiary-uwp-build-tools</module>
+  </modules>
 
 	<properties>
 		<maven.project.info.reports.version>2.9</maven.project.info.reports.version>
@@ -36,10 +35,11 @@
 		<pmd.javascript.version>6.6.0</pmd.javascript.version>
 		<pmd.jsp.version>6.4.0</pmd.jsp.version>
 		<java.jdk.version>1.8</java.jdk.version>
+		<basedir.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent</basedir.location>
 		<java.jdk.location>C:\Program Files (x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
-		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
-		<pmd.config.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\pmd-rules.xml</pmd.config.location>
-		<bestpractices.ruleset.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\bestpractices.xml</bestpractices.ruleset.location>
+		<checkstyle.config.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\checkstyle.xml</checkstyle.config.location>
+		<pmd.config.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\pmd-rules.xml</pmd.config.location>
+		<bestpractices.ruleset.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\bestpractices.xml</bestpractices.ruleset.location>
 	</properties>
 
 	<reporting>
@@ -64,10 +64,10 @@
 					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
 					<printFailingErrors>true</printFailingErrors>
-					<!-- <rulesets>
+					<rulesets>
 						<ruleset>${pmd.config.location}</ruleset>
 						<ruleset>${bestpractices.ruleset.location}</ruleset>
-					</rulesets> -->
+					</rulesets>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,0 +1,21 @@
+Perltidy version is 20200110
+
+C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent\mydiary-uwp-build-tools\src\main\resources\commit_message_check.sh: Begin Error Output Stream
+
+9: git log $currentbranch-- pretty = format:"%H" --not master > sha ...
+   ^
+found bareword where operator expected
+
+Missing ';' above?
+
+9: git log $currentbranch-- pretty = format:"%H" --not master > sha ...
+                         -- ^
+found bareword where operator expected (previous token underlined)
+74: final indentation level: 1
+
+Final nesting depth of '{'s is 1
+The most recent un-matched '{' is on line 3
+3: commit_message_check() {
+                          ^
+74: hit EOF while in format description
+74: To save a full .LOG file rerun with -g
