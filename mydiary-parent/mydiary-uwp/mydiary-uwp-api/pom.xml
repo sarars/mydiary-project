@@ -14,7 +14,7 @@
 	<packaging>pom</packaging>
 	<name>mydiary-uwp-api</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -23,9 +23,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<modules>
 		<module>mydiary-uwp-api-user</module>
 	</modules>
-	
+
 </project>
