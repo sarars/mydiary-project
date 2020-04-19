@@ -20,7 +20,8 @@
 	<modules>
 		<module>mydiary-uwp</module>
 		<module>mydiary-uwp-webapp</module>
-	  <module>mydiary-uwp-build-tools</module>
+		<module>mydiary-uwp-build-tools</module>
+	  <module>mydiary-shared</module>
   </modules>
 
 	<properties>
@@ -36,7 +37,8 @@
 		<pmd.jsp.version>6.4.0</pmd.jsp.version>
 		<java.jdk.version>1.8</java.jdk.version>
 		<basedir.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent</basedir.location>
-		<java.jdk.location>C:\Program Files (x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
+		<java.jdk.location>C:\Program Files
+			(x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
 		<checkstyle.config.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\checkstyle.xml</checkstyle.config.location>
 		<pmd.config.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\pmd-rules.xml</pmd.config.location>
 		<bestpractices.ruleset.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\bestpractices.xml</bestpractices.ruleset.location>
@@ -119,28 +121,28 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven.pmd.version}</version>
-				 <dependencies>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-core</artifactId>
-                            <version>${pmd.core.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-java</artifactId>
-                            <version>${pmd.java.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-javascript</artifactId>
-                            <version>${pmd.javascript.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-jsp</artifactId>
-                            <version>${pmd.jsp.version}</version>
-                        </dependency>
-                    </dependencies>
+				<dependencies>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-core</artifactId>
+						<version>${pmd.core.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-java</artifactId>
+						<version>${pmd.java.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-javascript</artifactId>
+						<version>${pmd.javascript.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-jsp</artifactId>
+						<version>${pmd.jsp.version}</version>
+					</dependency>
+				</dependencies>
 				<configuration>
 					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
