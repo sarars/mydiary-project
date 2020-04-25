@@ -5,16 +5,26 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/***
+ * 
+ * 
+ * @author SARANYA
+ *
+ */
 public class ApplicationConfiguration {
 	
+	private final static Logger LOGGER = Logger.getLogger(ApplicationConfiguration.class.getName());
+	
 	private static final ApplicationConfiguration INSTANCE = new ApplicationConfiguration();
+	
+	private static Properties configuration = new Properties();
 	
 	public static ApplicationConfiguration getInstance() {
 		return INSTANCE;
 	}
-	
-	private static Properties configuration = new Properties();
 	
 	private static Properties getConfiguration() {
 		return configuration;
@@ -29,13 +39,13 @@ public class ApplicationConfiguration {
 	}
 	
 	public void initialize(final String file) {
-		InputStream in = null;
+		InputStream inputStream = null;
 		try
 		{
-			in = new FileInputStream(new File(file));
-			configuration.load(in);
+			inputStream = new FileInputStream(new File(file));
+			configuration.load(inputStream);
 		} catch( IOException e) {
-			e.printStackTrace();
+			LOGGER.setLevel(Level.WARNING);
 		}
 	}
 
