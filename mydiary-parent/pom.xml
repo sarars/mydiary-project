@@ -36,7 +36,7 @@
 		<pmd.javascript.version>6.6.0</pmd.javascript.version>
 		<pmd.jsp.version>6.4.0</pmd.jsp.version>
 		<java.jdk.version>1.8</java.jdk.version>
-		<basedir.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project-clone\mydiary-project\mydiary-parent</basedir.location>
+		<basedir.location>C:\Users\SARANYA\Desktop\@nu\mydiary-project - Clone\mydiary-project\mydiary-parent</basedir.location>
 		<java.jdk.location>C:\Program Files
 			(x86)\Java\jdk1.8.0_241\bin\javac.exe</java.jdk.location>
 		<checkstyle.config.location>${basedir.location}\mydiary-uwp-build-tools\src\main\resources\checkstyle.xml</checkstyle.config.location>
@@ -83,13 +83,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.version}</version>
+				<inherited>true</inherited>
+				<!--<version>${maven.compiler.version}</version>
 				<configuration>
 					<source>${java.jdk.version}</source>
 					<target>${java.jdk.version}</target>
 					<fork>true</fork>
 					<executable>${java.jdk.location}</executable>
-				</configuration>
+				</configuration> -->
 			</plugin>
 			<!-- ===================================================================== -->
 			<!-- Maven Site plugin -->
@@ -146,10 +147,11 @@
 				<configuration>
 					<targetJdk>${java.jdk.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
+					<failurePriority>3</failurePriority>
 					<printFailingErrors>true</printFailingErrors>
 					<rulesets>
 						<ruleset>${pmd.config.location}</ruleset>
-						<ruleset>${bestpractices.ruleset.location}</ruleset>
+						<!--<ruleset>${bestpractices.ruleset.location}</ruleset>-->
 					</rulesets>
 				</configuration>
 				<executions>
